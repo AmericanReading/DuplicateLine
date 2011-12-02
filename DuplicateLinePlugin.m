@@ -48,20 +48,15 @@
         // Read the range of the current line.
         NSRange currentLineRange = [tv rangeOfCurrentLine];
         
-        // The insert range will be zero length and located after
-        // the currentLineRange's end.
-        NSRange insertRange = {
-            currentLineRange.location + currentLineRange.length + 1,
-            0
-        };
+        // Insert before the current line.
+        NSRange insertRange = {currentLineRange.location, 0};
         
         // Insert the current line and a line ending.
         NSString *insertString = [NSString stringWithFormat:@"%@%@", 
                                   [tv currentLine],
                                   [tv lineEnding]];
         
-        [tv replaceCharactersInRange:insertRange 
-                          withString:insertString];
+        [tv replaceCharactersInRange:insertRange withString:insertString];
         
 	}
 }
